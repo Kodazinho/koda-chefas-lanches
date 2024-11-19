@@ -1,0 +1,3 @@
+<?php
+
+    $produtos = $database->produtos();
