@@ -18,10 +18,9 @@ CREATE TABLE pedidos (
 );
 
 CREATE TABLE pedido_produto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     pedido_id INT,
     produto_id INT,
-    quantidade INT DEFAULT 1,
-    PRIMARY KEY (pedido_id, produto_id),
-    FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE,
-    FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE CASCADE
+    quantidade INT DEFAULT 1
 );
+

@@ -1,0 +1,3 @@
+<?php
+
+    $pedidos = $database->pedidos();

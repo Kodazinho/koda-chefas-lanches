@@ -12,7 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/script/tailwind.js"></script>
-    <title>Formulario de Cadastro de Produto</title>
+    <title>Koda & Chefas - Produtos</title>
+
 </head>
 
 <body class="bg-gray-200 font-sans leading-tight">

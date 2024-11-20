@@ -13,14 +13,14 @@ function produto($row){
         </div>
         
         <div class='absolute top-2 right-2 flex gap-2'>
-            <button type='button' class='h-10 w-10 bg-green-500 text-white p-2 rounded-full shadow-md hover:bg-green-600 transition-transform duration-200' onclick='add(\"" . strtolower($row['nome']) . "\")'>
+            <button type='button' class='h-10 w-10 bg-green-500 text-white p-2 rounded-full shadow-md hover:bg-green-600 transition-transform duration-200' onclick='add(" . $row['id'] . ")'>
                 +
             </button>
-            <button type='button' class='h-10 w-10 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600 transition-transform duration-200' onclick='remove(\"" . strtolower($row['nome']) . "\")'>
+            <button type='button' class='h-10 w-10 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600 transition-transform duration-200' onclick='remove(" . $row['id'] . ")'>
                 -
             </button>
             <div class=' flex items-center justify-center bg-white text-black rounded-full h-7 w-7'>
-                <h1 id='q" . $id . "'>0</h1>
+                <h1 id='q" . $row['id'] . "'>0</h1>
             </div>
         </div>
     </div>";
