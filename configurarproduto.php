@@ -27,20 +27,20 @@
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="mb-4">
                     <label for="nome" class="block text-sm font-medium text-gray-700">Nome do Produto</label>
-                    <input type="text" id="nome" name="nome" value="<?php echo $produto['nome'] ?>" placeholder="Digite o nome do produto"
+                    <input type="text" id="nome" name="nome" value="<?php echo $produto['nome'] ?>" placeholder="Digite o nome do produto" required
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="mb-4">
                     <label for="foto" class="block text-sm font-medium text-gray-700">Foto do Produto</label>
-                    <input type="file" id="foto" name="foto" accept="image/*"
+                    <input type="file" id="foto" name="foto" accept="image/*" required
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <p class="mt-2 text-sm text-gray-500">Deixe em branco para manter a foto atual.</p>
                 </div>
 
                 <div class="mb-4">
                     <label for="preco" class="block text-sm font-medium text-gray-700">Preço</label>
-                    <input type="number" step="0.01" id="preco" name="preco" value="<?= htmlspecialchars($produto['preco']) ?>" placeholder="Digite o preço do produto"
+                    <input type="number" step="0.01" id="preco" name="preco" value="<?= htmlspecialchars($produto['preco']) ?>" placeholder="Digite o preço do produto" required
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
