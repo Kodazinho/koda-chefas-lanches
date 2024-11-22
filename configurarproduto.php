@@ -2,6 +2,7 @@
 
     include 'database/database.php';
     include 'middleware/buscarproduto.php';
+    include 'controller/editarproduto.php';
 
 ?>
 
@@ -35,11 +36,6 @@
                     <input type="file" id="foto" name="foto" accept="image/*"
                         class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <p class="mt-2 text-sm text-gray-500">Deixe em branco para manter a foto atual.</p>
-                    <?php if (!empty($produto['imagem_base64'])): ?>
-                        <div class="mt-4">
-                            <img src="data:image/jpeg;base64,<?= $produto['imagem_base64'] ?>" alt="Imagem do Produto" class="w-32 h-32 object-cover rounded-md">
-                        </div>
-                    <?php endif; ?>
                 </div>
 
                 <div class="mb-4">

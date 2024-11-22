@@ -124,6 +124,42 @@ class Database
         $produto = $this->conexao->query("SELECT * FROM produtos WHERE id=$id");
         return $produto;
     }
+
+    public function editarProduto($id, $nome, $foto, $preco) {
+        // verifica se mandaram imagem.
+        if ($foto == null || !isset($foto['tmp_name'])) {
+            // atualiza apenas o nome e o preço se não tiver imagem
+            $sql = "UPDATE produtos SET nome='$nome', preco='$preco' WHERE id=$id";
+            $this->conexao->query($sql);
+        } else {
+            // se tiver imagem, processa o upload
+            // pega o caminho temporário da imagem
+            $caminhoTemporario = $foto['tmp_name'];
+    
+            // verifica se o caminho temporário é válido
+            if ($caminhoTemporario) {
+                // pega o conteúdo binário da imagem
+                $conteudoBinario = file_get_contents($caminhoTemporario);
+    
+                // converte a imagem para base64
+                $base64 = base64_encode($conteudoBinario);
+    
+                // pega o tipo MIME da imagem ex: jpeg, png, jpg
+                $tipoMime = mime_content_type($caminhoTemporario);
+    
+                // cria a string da imagem base64
+                $imagemBase64 = "data:$tipoMime;base64," . $base64;
+    
+                // remove o prefixo 'data:image/...' do base64
+                $imagemBase64 = preg_replace('/^data:image\/\w+;base64,/', '', $imagemBase64);
+    
+                // atualiza o nome, preço e a imagem base64
+                $sql = "UPDATE produtos SET nome='$nome', preco='$preco', imagem_base64='$imagemBase64' WHERE id=$id";
+                $this->conexao->query($sql);
+            }
+        }
+    }
+    
     
 }
 
