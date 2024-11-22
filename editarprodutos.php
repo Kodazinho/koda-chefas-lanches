@@ -2,6 +2,7 @@
 
 include 'database/database.php';
 include 'middleware/produtos.php';
+include 'controller/editarproduto.php';
 
 ?>
 
@@ -23,7 +24,7 @@ include 'middleware/produtos.php';
         <div class="bg-white p-8 rounded-lg shadow-md w-[80vw]">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Gestão de Produtos</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                 <?php
                 // Verificar se existem produtos registrados
                 if ($produtos->num_rows > 0) {
@@ -40,15 +41,14 @@ include 'middleware/produtos.php';
                                 <p class='text-white text-xs'>R$ $preco</p>
                             </div>
                             <div class='absolute top-2 right-2 flex gap-2'>
-                                <a href='configurarproduto.php?id={$produto['id']}'
+                                <a href='configurarproduto.php?edit={$produto['id']}'
                                    class='h-10 w-10 bg-blue-500 text-white p-2 rounded-full shadow-md hover:bg-blue-600 transition-transform duration-200'
                                    title='Editar'>
                                     ✏️
                                 </a>
-                                <a href='configurarproduto.php?id={$produto['id']}'
+                                <a href='editarprodutos.php?del={$produto['id']}'
                                    class='h-10 w-10 bg-red-500 text-white p-2 rounded-full shadow-md hover:bg-red-600 transition-transform duration-200'
-                                   title='Deletar'
-                                   onclick='return confirm(\"Tem certeza que deseja deletar este produto?\")'>
+                                   title='Deletar'>
                                     🗑️
                                 </a>
                             </div>

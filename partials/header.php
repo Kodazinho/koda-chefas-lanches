@@ -8,5 +8,6 @@
         <h3 class="ml-3 mr-3 cursor-pointer font-semibold"><a href="produto.php">Registrar Produto</a></h3>
         <h3 class="ml-3 mr-3 cursor-pointer font-semibold"><a href="editarprodutos.php">Editar Produtos</a></h3>
         <h3 class="ml-3 mr-3 cursor-pointer font-semibold"><a href="pedidos.php">Pedidos</a></h3>
+        <h3 class="ml-3 mr-3 cursor-pointer font-semibold"><a href="resumo.php">Resumo</a></h3>
     </nav>
 </header>

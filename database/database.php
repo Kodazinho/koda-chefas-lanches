@@ -56,11 +56,6 @@ class Database
             }
         }
     }
-
-
-
-
-
     public function produtos()
     {
         $sql = "SELECT * FROM produtos";
@@ -93,7 +88,12 @@ class Database
                 $sqlProduto = "SELECT * FROM produtos WHERE id=" . $produto['produto_id']; // SQL para pegar produto
                 $produtoData = $this->conexao->query($sqlProduto); // pega o item pedido
                 $produtodata = $produtoData->fetch_assoc(); //Transforma em array
-                $produto['nome'] = $produtodata['nome']; // Inclui o nome do produto ao array de produto
+                // verifica se o produto existe
+                if($produtodata != null){
+                    $produto['nome'] = $produtodata['nome']; // Inclui o nome do produto ao array de produto
+                }else{
+                    $produto['nome'] = 'Produto não encontrado'; // Mensagem de que o produto não existe mais
+                }
                 $produtosArray[] = $produto;  // Adiciona cada produto ao array
             }
 
@@ -106,6 +106,25 @@ class Database
 
         return $pedidosArray;  // Retorna o array com todos os pedidos
     }
+
+    public function finalizar($id){
+
+        $this->conexao->query("UPDATE pedidos SET finalizado=true WHERE id=$id");
+
+    }
+    
+    public function deletar($id){
+
+        $this->conexao->query("DELETE FROM produtos WHERE id=$id");
+
+    }
+
+    public function buscar($id){
+
+        $produto = $this->conexao->query("SELECT * FROM produtos WHERE id=$id");
+        return $produto;
+    }
+    
 }
 
 $database = new Database($con);

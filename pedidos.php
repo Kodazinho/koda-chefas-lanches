@@ -2,6 +2,7 @@
 
     include 'database/database.php';
     include 'middleware/pedidos.php';
+    include 'controller/finalizar.php';
 
 ?>
 
@@ -50,10 +51,19 @@
                                 <th>Data do Pedido</th>
                                 <th>Preço Total</th>
                                 <th>Produtos</th>
+                                <th>Finalizar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($pedidos as $pedido): ?>
+                            <?php 
+                                $exibir_pedidos = false; // Variável para controlar se tem pedidos para exibir
+                                foreach ($pedidos as $pedido):
+                                    // se o pedido tiver finalizado, pula para o próximo
+                                    if ($pedido['finalizado'] == true) {
+                                        continue;  // Pula este pedido e vai para o próximo
+                                    }
+                                    $exibir_pedidos = true;  // Se encontrar algum pedido não finalizado, marca como exibir
+                            ?>
                                 <tr>
                                     <td><?= $pedido['id'] ?></td>
                                     <td><?= $pedido['cliente_nome'] ?></td>
@@ -66,8 +76,15 @@
                                             <?php endforeach; ?>
                                         </ul>
                                     </td>
+                                    <td><a href="/pedidos.php?id=<?= $pedido['id'] ?>"><button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">Finalizar</button></a></td>
                                 </tr>
                             <?php endforeach; ?>
+
+                            <?php if (!$exibir_pedidos): ?>
+                                <tr>
+                                    <td colspan="6" class="text-center text-gray-600">Nenhum pedido encontrado.</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 <?php else: ?>

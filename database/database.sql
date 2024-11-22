@@ -14,7 +14,8 @@ CREATE TABLE pedidos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_nome VARCHAR(255) NOT NULL,
     data_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
-    total DECIMAL(10, 2) NOT NULL
+    total DECIMAL(10, 2) NOT NULL,
+    finalizado BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE pedido_produto (
